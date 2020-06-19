@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="add_button">
+        <button onclick="add_product_show_form()">Add product</button>
+    </div>
+    <div id="clear_button">
+        <button onclick="clear_lists()">Clear lists</button>
+    </div>
+    <div id="print_button">
+        <button onclick="print_lists()">Print lists</button>
+    </div>
+    <div class="main_div">
+        <div id="fruits_div" class="categories">
+            <h3>Fruits</h3>
+            <ul id="add_fruit" ondrop="drag_elementDrop(event)" ondragover="allowDrop(event)">
+            </ul>
+        </div>
+        <div id="vegatables_div" class="categories">
+            <h3>Vegetables</h3>
+            <ul id="add_vegetable" ondrop="drag_elementDrop(event)" ondragover="allowDrop(event)">
+            </ul>
+        </div>
+        <div id="toys_div" class="categories">
+            <h3>Toys</h3>
+            <ul id="add_toy" ondrop="drag_elementDrop(event)" ondragover="allowDrop(event)">
+            </ul>
+        </div>
+        <div id="household_items_div" class="categories">
+            <h3>Household items</h3>
+            <ul id="add_household_items" ondrop="drag_elementDrop(event)" ondragover="allowDrop(event)">
+            </ul>
+        </div>
+        <div id="other_div" class="categories">
+            <h3>Other</h3>
+            <ul id="add_other" ondrop="drag_elementDrop(event)" ondragover="allowDrop(event)">
+            </ul>
+        </div>
+    </div>
+    <div id="input_form" style="display:none;">
+        <h3>Add product</h3>
+        <div style="position:absolute; right:3px;top:3px;">
+            <button onclick="close_form_window()">X</button>
+        </div>
+        <form>
+            <label for="Product_name">Product:</label>
+            <br>
+            <input type="text" id="Product_name" name="Product_name" required></input>
+            <br>
+            <label for="Product_amount">Amount:</label>
+            <br>
+            <input type="number" min="0" id="Product_amount" name="Product_amount" required></input>
+            <br>
+            <input type="radio" id="kg" name="unit" value="kg">
+            <label for="kg">Kg</label>
+            <input type="radio" id="liter" name="unit" value="liter">
+            <label for="liter">Liter</label>
+            <input type="radio" id="pieces" name="unit" value="pieces">
+            <label for="pieces">Pieces</label>
+            <br>
+            <label for="Category">Category:</label><br>
+            <select name="Category" id="Category" style="width: 60%;">
+                <option>*Pick one*</option>
+                <option value="add_fruit">Fruits</option>
+                <option value="add_vegetable">Vegetables</option>
+                <option value="add_toy">Toys</option>
+                <option value="add_household_items">Household</option>
+                <option value="add_other">Other</option>
+            </select>
+        </form>
+        <div style="position:absolute; right:15px;bottom:15px;">
+            <button id="Product_submit_button" onclick="add_product(document.getElementById('Product_name').value,document.getElementById('Product_amount').value,check_radio(),document.getElementById('Category').value)">Submit</button>
+        </div>
+    </div>
+</body>
+</html>

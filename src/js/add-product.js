@@ -28,18 +28,24 @@ function check_radio(){
 
 function display_localstorage(){
     for(var i in localStorage) {
-        var catid = localStorage[i].split(",");
-        console.log(i);
+        var catid;
+        try{
+            catid = localStorage[i].split(",");
+        }catch(err){
+            console.log(err.message);
+            break;
+        }
         var catid_l= catid[0];
-        console.log(catid_l);
         var render_element = $("#"+catid_l)[0];
-        console.log(render_element);
         var product_elem = document.createElement("li");
         product_elem.innerHTML = i;
         product_elem.id=catid[1];
-        console.log(product_elem);
-        render_element.appendChild(product_elem);
-    }
+        try{
+            render_element.appendChild(product_elem);
+        }catch(err){
+            console.log(err.message);
+        }
+    };
 }
 
 
